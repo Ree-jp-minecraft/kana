@@ -1,4 +1,8 @@
 name: kana
 main: Ree\kana\main
 api : 3.0.0
-version: 1.0.0
+commands:
+  kana:
+    usage: /kana <on:off>
+    description: change kana
+version: 1.1.0
