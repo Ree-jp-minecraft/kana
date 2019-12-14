@@ -32,6 +32,28 @@ class main extends PluginBase implements Listener
 		$message = str_replace("nn" ,"ん" ,$message);
 		$message = str_replace("tt" ,"っt" ,$message);
 
+		$message = str_replace("kya" ,"きゃ" ,$message);
+		$message = str_replace("kyu" ,"きゅ" ,$message);
+		$message = str_replace("kyo" ,"きょ" ,$message);
+		$message = str_replace("sya" ,"しゃ" ,$message);
+		$message = str_replace("syu" ,"しゅ" ,$message);
+		$message = str_replace("syo" ,"しょ" ,$message);
+		$message = str_replace("tya" ,"ちゃ" ,$message);
+		$message = str_replace("tyu" ,"ちゅ" ,$message);
+		$message = str_replace("tyo" ,"ちょ" ,$message);
+		$message = str_replace("nya" ,"にゃ" ,$message);
+		$message = str_replace("nyu" ,"にゅ" ,$message);
+		$message = str_replace("nyo" ,"にょ" ,$message);
+		$message = str_replace("hya" ,"ひゃ" ,$message);
+		$message = str_replace("hyu" ,"ひゅ" ,$message);
+		$message = str_replace("hyo" ,"ひょ" ,$message);
+		$message = str_replace("mya" ,"みゃ" ,$message);
+		$message = str_replace("myu" ,"みゅ" ,$message);
+		$message = str_replace("myo" ,"みょ" ,$message);
+		$message = str_replace("rya" ,"りゃ" ,$message);
+		$message = str_replace("ryu" ,"りゅ" ,$message);
+		$message = str_replace("ryo" ,"りょ" ,$message);
+
 		$message = str_replace("ka" ,"か" ,$message);
 		$message = str_replace("ki" ,"き" ,$message);
 		$message = str_replace("ku" ,"く" ,$message);
@@ -99,28 +121,6 @@ class main extends PluginBase implements Listener
 		$message = str_replace("pu" ,"ぷ" ,$message);
 		$message = str_replace("pe" ,"ぺ" ,$message);
 		$message = str_replace("po" ,"ぽ" ,$message);
-
-		$message = str_replace("kya" ,"きゃ" ,$message);
-		$message = str_replace("kyu" ,"きゅ" ,$message);
-		$message = str_replace("kyo" ,"きょ" ,$message);
-		$message = str_replace("sya" ,"しゃ" ,$message);
-		$message = str_replace("syu" ,"しゅ" ,$message);
-		$message = str_replace("syo" ,"しょ" ,$message);
-		$message = str_replace("tya" ,"ちゃ" ,$message);
-		$message = str_replace("tyu" ,"ちゅ" ,$message);
-		$message = str_replace("tyo" ,"ちょ" ,$message);
-		$message = str_replace("nya" ,"にゃ" ,$message);
-		$message = str_replace("nyu" ,"にゅ" ,$message);
-		$message = str_replace("nyo" ,"にょ" ,$message);
-		$message = str_replace("hya" ,"ひゃ" ,$message);
-		$message = str_replace("hyu" ,"ひゅ" ,$message);
-		$message = str_replace("hyo" ,"ひょ" ,$message);
-		$message = str_replace("mya" ,"みゃ" ,$message);
-		$message = str_replace("myu" ,"みゅ" ,$message);
-		$message = str_replace("myo" ,"みょ" ,$message);
-		$message = str_replace("rya" ,"りゃ" ,$message);
-		$message = str_replace("ryu" ,"りゅ" ,$message);
-		$message = str_replace("ryo" ,"りょ" ,$message);
 
 		$message = str_replace("a" ,"あ" ,$message);
 		$message = str_replace("i" ,"い" ,$message);
