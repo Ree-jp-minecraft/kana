@@ -179,6 +179,10 @@ class main extends PluginBase implements Listener
 		return $string;
 	}
 
+	/**
+	 * @param Player $p
+	 * @return bool
+	 */
 	private function isChange(Player $p): bool
 	{
 		$nbt = $p->namedtag;
@@ -189,7 +193,7 @@ class main extends PluginBase implements Listener
 				return false;
 			}
 		} else {
-			return true;
+			return false;
 		}
 	}
 }
