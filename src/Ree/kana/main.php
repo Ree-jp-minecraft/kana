@@ -89,6 +89,10 @@ class main extends PluginBase implements Listener
 		$message = str_replace("rya", "りゃ", $message);
 		$message = str_replace("ryu", "りゅ", $message);
 		$message = str_replace("ryo", "りょ", $message);
+		$message = str_replace("zya", "じゃ", $message);
+		$message = str_replace("zyu", "じゅ", $message);
+		$message = str_replace("zyo", "じょ", $message);
+
 
 		$message = str_replace("ka", "か", $message);
 		$message = str_replace("ki", "き", $message);
