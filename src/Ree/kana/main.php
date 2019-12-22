@@ -11,16 +11,100 @@ use pocketmine\event\Listener;
 
 class main extends PluginBase implements Listener
 {
-	public function onEnable()
-	{
+
+	const ROME = [
+		'BB','CC','DD','FF','GG','HH','JJ','KK','LL','MM','NN','PP','QQ','RR','SS','TT','VV','WW','XX','YY','ZZ',
+			'KA','KI','KU','KE','KO',
+			'GA','GI','GU','GE','GO',
+			'KYA','KYI','KYU','KYE','KYO',
+			'GYA','GYI','GYU','GYE','GYO',
+			'SHA','SHI','SHU','SHE','SHO',
+			'TSU','SA','SHI','SU','SE','SO',
+			'ZA','ZI','ZU','ZE','ZO',
+			'SYA','SYI','SYU','SYE','SYO',
+			'JA','JI','JU','JE','JO',
+			'ZYA','ZYI','ZYU','ZYE','ZYO',
+			'XTU','LTU','TA','TI','TU','TE','TO',
+			'DYA','DYI','DYU','DYE','DYO',
+			'DHA','DHI','DHU','DHE','DHO',
+			'DA','DI','DU','DE','DO',
+			'CHA','CHI','CHU','CHE','CHO',
+			'TYA','TYI','TYU','TYE','TYO',
+			'NA','NI','NU','NE','NO',
+			'NYA','NYI','NYU','NYE','NYO',
+			'THA','THI','THU','THE','THO',
+			'HA','HI','HU','HE','HO',
+			'BA','BI','BU','BE','BO',
+			'HYA','HYI','HYU','HYE','HYO',
+			'BYA','BYI','BYU','BYE','BYO',
+			'PA','PI','PU','PE','PO',
+			'PYA','PYI','PYU','PYE','PYO',
+			'MA','MI','MU','ME','MO',
+			'MYA','MYI','MYU','MYE','MYO',
+			'RYA','RYI','RYU','RYE','RYO',
+			'YA','YI','YU','YE','YO',
+			'RA','RI','RU','RE','RO',
+			'WA','WI','WU','WE','WO',
+			'SI','TI','TU',
+			'XA','XI','XU','XE','XO',
+			'LA','LI','LU','LE','LO',
+			'VA','VI','VU','VE','VO',
+			'FA','FI','FU','FE','FO',
+			'QA','QI','QU','QE','QO',
+			'A','I','U','E','O','N','-',',','.',':'
+	];
+
+	const KANA = [
+		'っB','っC','っD','っF','っG','っH','っJ','っK','っL','っM','ん','っP','っQ','っR','っS','っT','っV','っW','っX','っY','っZ',
+			'か','き','く','け','こ',
+			'が','ぎ','ぐ','げ','ご',
+			'きゃ','きぃ','きゅ','きぇ','きょ',
+			'ぎゃ','ぎぃ','ぎゅ','ぎぇ','ぎょ',
+			'しゃ','し','しゅ','しぇ','しょ',
+			'つ','さ','し','す','せ','そ',
+			'ざ','じ','ず','ぜ','ぞ',
+			'しゃ','しぃ','しゅ','しぇ','しょ',
+			'じゃ','じ','じゅ','じぇ','じょ',
+			'じゃ','じぃ','じゅ','じぇ','じょ',
+			'っ','っ','た','ち','つ','て','と',
+			'ぢゃ','ぢぃ','ぢゅ','ぢぇ','ぢょ',
+			'でゃ','でぃ','でゅ','でぇ','でぃ',
+			'だ','ぢ','づ','で','ど',
+			'ちゃ','ち','ちゅ','ちぇ','ちょ',
+			'ちゃ','ちぃ','ちゅ','ちぇ','ちょ',
+			'な','に','ぬ','ね','の',
+			'にゃ','にぃ','にゅ','にぇ','にょ',
+			'てゃ','てぃ','てゅ','てぇ','てょ',
+			'は','ひ','ふ','へ','ほ',
+			'ば','び','ぶ','べ','ぼ',
+			'ひゃ','ひぃ','ひゅ','ひぇ','ひょ',
+			'びゃ','びょ','びゅ','びぇ','びょ',
+			'ぱ','ぴ','ぷ','ぺ','ぽ',
+			'ぴゃ','ぴぃ','ぴゅ','ぴぇ','ぴょ',
+			'ま','み','む','め','も',
+			'みゃ','みぃ','みゅ','みぇ','みょ',
+			'りゃ','りぃ','りゅ','りぇ','りょ',
+			'や','い','ゆ','いぇ','よ',
+			'ら','り','る','れ','ろ',
+			'わ','うぃ','う','うぇ','を',
+			'し','ち','つ',
+			'ぁ','ぃ','ぅ','ぇ','ぉ',
+			'ぁ','ぃ','ぅ','ぇ','ぉ',
+			'ヴぁ','ヴぃ','ヴ','ヴぇ','ヴぉ',
+			'ふぁ','ふぃ','ふ','ふぇ','ふぉ',
+			'くぁ','くぃ','く','くぇ','くぉ',
+			'あ','い','う','え','お','ん','ー','、','。','.'
+	];
+
+
+public function onEnable() {
 		$this->getLogger()->info("このプラグインは開発段階なため,動作は保証できません");
 		$this->getLogger()->info("バグ報告はこちらへ");
 		$this->getLogger()->info("https://github.com/Ree-jp/kana/issues");
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
-	public function onChat(PlayerChatEvent $ev)
-	{
+	public function onChat(PlayerChatEvent $ev) {
 		$bool = $this->isChange($ev->getPlayer());
 		if ($bool) {
 			$message = $ev->getMessage();
@@ -29,22 +113,12 @@ class main extends PluginBase implements Listener
 		}
 	}
 
-	public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
-	{
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) :bool {
 		if ($command == "kana") {
 			if (!$sender instanceof Player) {
 				$sender->sendMessage("§6>> §rコンソールでは使用不可なコマンドです");
 			}
 			$bool = $this->isChange($sender);
-			if (!isset($args[0]))
-			{
-				if ($bool)
-				{
-					$args[0] = "off";
-				}else{
-					$args[0] = "on";
-				}
-			}
 			if ($args[0] === "on") {
 				if ($bool) {
 					$sender->sendMessage("§6>> §rすでにonになっています");
@@ -70,134 +144,48 @@ class main extends PluginBase implements Listener
 
 	/**
 	 * @param string $message
+	 *
 	 * @return string
 	 */
-	private function Transfer(string $message): string
-	{
-		$message = str_replace("nn", "ん", $message);
-		$message = str_replace("tt", "っt", $message);
-
-		$message = str_replace("kya", "きゃ", $message);
-		$message = str_replace("kyu", "きゅ", $message);
-		$message = str_replace("kyo", "きょ", $message);
-		$message = str_replace("sya", "しゃ", $message);
-		$message = str_replace("syu", "しゅ", $message);
-		$message = str_replace("syo", "しょ", $message);
-		$message = str_replace("tya", "ちゃ", $message);
-		$message = str_replace("tyu", "ちゅ", $message);
-		$message = str_replace("tyo", "ちょ", $message);
-		$message = str_replace("nya", "にゃ", $message);
-		$message = str_replace("nyu", "にゅ", $message);
-		$message = str_replace("nyo", "にょ", $message);
-		$message = str_replace("hya", "ひゃ", $message);
-		$message = str_replace("hyu", "ひゅ", $message);
-		$message = str_replace("hyo", "ひょ", $message);
-		$message = str_replace("mya", "みゃ", $message);
-		$message = str_replace("myu", "みゅ", $message);
-		$message = str_replace("myo", "みょ", $message);
-		$message = str_replace("rya", "りゃ", $message);
-		$message = str_replace("ryu", "りゅ", $message);
-		$message = str_replace("ryo", "りょ", $message);
-		$message = str_replace("zya", "じゃ", $message);
-		$message = str_replace("zyu", "じゅ", $message);
-		$message = str_replace("zyo", "じょ", $message);
-
-
-		$message = str_replace("ka", "か", $message);
-		$message = str_replace("ki", "き", $message);
-		$message = str_replace("ku", "く", $message);
-		$message = str_replace("ke", "け", $message);
-		$message = str_replace("ko", "こ", $message);
-		$message = str_replace("sa", "さ", $message);
-		$message = str_replace("si", "し", $message);
-		$message = str_replace("su", "す", $message);
-		$message = str_replace("se", "せ", $message);
-		$message = str_replace("so", "そ", $message);
-		$message = str_replace("ta", "た", $message);
-		$message = str_replace("ti", "ち", $message);
-		$message = str_replace("tu", "つ", $message);
-		$message = str_replace("te", "て", $message);
-		$message = str_replace("to", "と", $message);
-		$message = str_replace("na", "な", $message);
-		$message = str_replace("ni", "に", $message);
-		$message = str_replace("nu", "ぬ", $message);
-		$message = str_replace("ne", "ね", $message);
-		$message = str_replace("no", "の", $message);
-		$message = str_replace("ha", "は", $message);
-		$message = str_replace("hi", "ひ", $message);
-		$message = str_replace("hu", "ふ", $message);
-		$message = str_replace("he", "へ", $message);
-		$message = str_replace("ho", "ほ", $message);
-		$message = str_replace("ma", "ま", $message);
-		$message = str_replace("mi", "み", $message);
-		$message = str_replace("mu", "む", $message);
-		$message = str_replace("me", "め", $message);
-		$message = str_replace("mo", "も", $message);
-		$message = str_replace("ya", "や", $message);
-		$message = str_replace("yu", "ゆ", $message);
-		$message = str_replace("yo", "よ", $message);
-		$message = str_replace("ra", "ら", $message);
-		$message = str_replace("ri", "り", $message);
-		$message = str_replace("ru", "る", $message);
-		$message = str_replace("re", "れ", $message);
-		$message = str_replace("ro", "ろ", $message);
-		$message = str_replace("wa", "わ", $message);
-		$message = str_replace("wo", "を", $message);
-
-		$message = str_replace("ga", "が", $message);
-		$message = str_replace("gi", "ぎ", $message);
-		$message = str_replace("gu", "ぐ", $message);
-		$message = str_replace("ge", "げ", $message);
-		$message = str_replace("go", "ご", $message);
-		$message = str_replace("za", "ざ", $message);
-		$message = str_replace("zi", "じ", $message);
-		$message = str_replace("zu", "ず", $message);
-		$message = str_replace("ze", "ぜ", $message);
-		$message = str_replace("zo", "ぞ", $message);
-		$message = str_replace("da", "だ", $message);
-		$message = str_replace("di", "ぢ", $message);
-		$message = str_replace("du", "づ", $message);
-		$message = str_replace("de", "で", $message);
-		$message = str_replace("do", "ど", $message);
-		$message = str_replace("ba", "ば", $message);
-		$message = str_replace("bi", "び", $message);
-		$message = str_replace("bu", "ぶ", $message);
-		$message = str_replace("be", "べ", $message);
-		$message = str_replace("bo", "ぼ", $message);
-
-		$message = str_replace("pa", "ぱ", $message);
-		$message = str_replace("pi", "ぴ", $message);
-		$message = str_replace("pu", "ぷ", $message);
-		$message = str_replace("pe", "ぺ", $message);
-		$message = str_replace("po", "ぽ", $message);
-
-		$message = str_replace("a", "あ", $message);
-		$message = str_replace("i", "い", $message);
-		$message = str_replace("u", "う", $message);
-		$message = str_replace("e", "え", $message);
-		$message = str_replace("o", "お", $message);
-
-		return $message;
+	private function Transfer(string $message) :string {
+		$translateMessage  = str_ireplace(self::ROME, self::KANA, $message);
+		return $translateMessage;
 	}
 
 	/**
 	 * @param string $string
+	 *
 	 * @return mixed|string
 	 */
-	private function onChange(string $string): string
-	{
-		$check = array("§1", "§2", "§3", "§4", "§5", "§6", "§7", "§8", "§9", "§a", "§b", "§c", "§d", "§e", "§f", "§k", "§l", "§m", "§n", "§o", "§r");
+	private function onChange(string $string) :string {
+		$check = array(
+			"§1",
+			"§2",
+			"§3",
+			"§4",
+			"§5",
+			"§6",
+			"§7",
+			"§8",
+			"§9",
+			"§a",
+			"§b",
+			"§c",
+			"§d",
+			"§e",
+			"§f",
+			"§k",
+			"§l",
+			"§m",
+			"§n",
+			"§o",
+			"§r"
+		);
 		$string = str_replace($check, "", $string);
-
 		return $string;
 	}
 
-	/**
-	 * @param Player $p
-	 * @return bool
-	 */
-	private function isChange(Player $p): bool
-	{
+	private function isChange(Player $p) :bool {
 		$nbt = $p->namedtag;
 		if ($nbt->offsetExists("kanaChange")) {
 			if ($nbt->getInt("kanaChange")) {
@@ -206,7 +194,7 @@ class main extends PluginBase implements Listener
 				return false;
 			}
 		} else {
-			return false;
+			return true;
 		}
 	}
 }
