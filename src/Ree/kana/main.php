@@ -119,6 +119,15 @@ public function onEnable() {
 				$sender->sendMessage("§6>> §rコンソールでは使用不可なコマンドです");
 			}
 			$bool = $this->isChange($sender);
+			if (!isset($args[0]))
+			{
+				if ($bool)
+				{
+					$args[0] = "off";
+				}else{
+					$args[0] = "on";
+				}
+			}
 			if ($args[0] === "on") {
 				if ($bool) {
 					$sender->sendMessage("§6>> §rすでにonになっています");
@@ -139,7 +148,7 @@ public function onEnable() {
 				return false;
 			}
 		}
-		return true;
+		return false;
 	}
 
 	/**
