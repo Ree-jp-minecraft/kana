@@ -41,7 +41,6 @@ class TranslateJapanese extends AsyncTask
 			'http' => array('ignore_errors' => true)
 		));
 		$result = file_get_contents($url, false, $context);
-		$result = file_get_contents($url);
 		$this->setResult($result);
 	}
 
