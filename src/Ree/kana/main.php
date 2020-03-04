@@ -20,9 +20,9 @@ class main extends PluginBase implements Listener
 		$this->getLogger()->info("このプラグインは開発段階なため,動作は保証できません");
 		$this->getLogger()->info("バグ報告はこちらへ");
 		$this->getLogger()->info("https://github.com/Ree-jp/kana/issues");
-		$this->getLogger()->warning('----------important----------');
+		$this->getLogger()->warning('----------------------------------------');
 		$this->getLogger()->info("This plugin has been converted using google's translation api, so the meaning may be different from the sentence before conversion");
-		$this->getLogger()->warning('----------important----------');
+		$this->getLogger()->warning('----------------------------------------');
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
@@ -31,8 +31,7 @@ class main extends PluginBase implements Listener
 		$bool = $this->isChange($ev->getPlayer());
 		if ($bool) {
 			$oldMessage = $ev->getMessage();
-			$oldMessage = str_replace(' ', '+', $oldMessage);
-			Server::getInstance()->getAsyncPool()->submitTask(new TranslateEnglish('<'.$ev->getPlayer()->getName().'>',$oldMessage));
+			Server::getInstance()->getAsyncPool()->submitTask(new TranslateEnglish('<'.$ev->getPlayer()->getDisplayName().'>',$oldMessage));
 			$ev->setCancelled();
 		}
 	}

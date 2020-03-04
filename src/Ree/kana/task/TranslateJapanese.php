@@ -36,11 +36,17 @@ class TranslateJapanese extends AsyncTask
 	 */
 	public function onRun()
 	{
-		$url = 'https://script.google.com/macros/s/AKfycbz00c97OofTCTZ0WU3s4b5vQG__GtD2CVPVgT6mnMzRRPb-qJ9k/exec?text='.$this->text.'&source=en&target=ja';
+		$url = 'https://script.google.com/macros/s/AKfycbz00c97OofTCTZ0WU3s4b5vQG__GtD2CVPVgT6mnMzRRPb-qJ9k/exec?text=' . $this->text . '&source=en&target=ja';
 		$context = stream_context_create(array(
-			'http' => array('ignore_errors' => true)
-		));
+			'http' => array('ignore_errors' => true),
+			'ssl' => array(
+				'verify_peer' => false,
+				'verify_peer_name' => false
+			)));
 		$result = file_get_contents($url, false, $context);
+		if (mb_strlen($result) === 1551) {
+			$result = '[Translate Bad Request] '.$this->oldText;
+		}
 		$this->setResult($result);
 	}
 
@@ -49,7 +55,7 @@ class TranslateJapanese extends AsyncTask
 	 */
 	public function onCompletion(Server $server)
 	{
-		$server->broadcastMessage($this->name.' '. $this->oldText.'   <'.TextFormat::GOLD.$this->getResult().'>');
+		$server->broadcastMessage($this->name . ' ' . $this->oldText . TextFormat::GOLD. '   <' . $this->getResult() . '>');
 		parent::onCompletion($server);
 	}
 }
